@@ -1,388 +1,144 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendário de Mídia | CEDB</title>
+<div class="dias">
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    <!-- OUTUBRO 2026 COMEÇA NA QUINTA -->
+    <div class="dia vazio"></div>
+    <div class="dia vazio"></div>
+    <div class="dia vazio"></div>
+    <div class="dia vazio"></div>
 
-:root {
-    --azul: #0A2E7A;
-    --azul-escuro: #071f52;
-    --azul-claro: #DCEBFF;
-    --amarelo: #F7C400;
-    --branco: #ffffff;
-    --fundo: #f4f7fc;
-    --texto: #17233c;
-}
-
-body { font-family: Arial, Helvetica, sans-serif; background: var(--fundo); color: var(--texto); }
-
-/* ===== TOPO ===== */
-header {
-    background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
-    color: white;
-    padding: 18px 6%;
-    position: relative;
-    overflow: hidden;
-}
-header::after {
-    content: "";
-    position: absolute;
-    width: 260px; height: 260px;
-    border-radius: 50%;
-    background: rgba(247,196,0,0.12);
-    right: -70px; top: -120px;
-}
-.topo {
-    max-width: 1250px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    z-index: 2;
-}
-.marca { display: flex; align-items: center; gap: 16px; }
-
-/* LOGO OFICIAL */
-.logo {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: block;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-}
-
-.marca h1 { font-size: 21px; letter-spacing: 0.3px; }
-.marca span {
-    display: block;
-    margin-top: 3px;
-    color: var(--azul-claro);
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-.ano { text-align: right; }
-.ano strong { display: block; font-size: 20px; }
-.ano span { font-size: 12px; color: var(--azul-claro); }
-
-/* ===== CONTEÚDO ===== */
-main { max-width: 1250px; margin: 35px auto; padding: 0 20px; }
-.titulo { margin-bottom: 25px; }
-.titulo p { color: #71809b; margin-top: 5px; font-size: 14px; }
-.titulo h2 { color: var(--azul); font-size: 30px; }
-
-.painel {
-    display: grid;
-    grid-template-columns: 1.65fr 0.8fr;
-    gap: 24px;
-    align-items: stretch;
-}
-
-/* ===== CALENDÁRIO ===== */
-.calendario-box {
-    background: white;
-    border-radius: 22px;
-    padding: 25px;
-    box-shadow: 0 10px 35px rgba(10,46,122,0.08);
-}
-.cabecalho-calendario {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px;
-}
-.cabecalho-calendario h3 { color: var(--azul); font-size: 22px; }
-.mes-tag {
-    background: var(--azul-claro);
-    color: var(--azul);
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-.dias-semana, .dias {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 9px;
-}
-.dia-semana {
-    text-align: center;
-    font-size: 11px;
-    font-weight: bold;
-    color: #8995aa;
-    padding: 8px 0;
-}
-.dia {
-    min-height: 86px;
-    border: 1px solid #e8edf5;
-    border-radius: 13px;
-    padding: 10px;
-    background: #fff;
-    transition: 0.2s;
-}
-.dia:hover {
-    border-color: var(--azul-claro);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(10,46,122,0.08);
-}
-.numero { font-size: 14px; font-weight: bold; color: #45516a; }
-.vazio { border: none; background: transparent; }
-
-/* Futuramente usaremos esta classe nos dias com postagem */
-.postagem { border: 2px solid var(--amarelo); background: #fffdf1; cursor: pointer; }
-.etiqueta {
-    display: inline-block;
-    margin-top: 12px;
-    background: var(--amarelo);
-    color: #554500;
-    font-size: 9px;
-    font-weight: bold;
-    padding: 4px 7px;
-    border-radius: 6px;
-}
-
-/* ===== PAINEL LATERAL ===== */
-.visual {
-    min-height: 100%;
-    border-radius: 22px;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(145deg, rgba(10,46,122,0.98), rgba(7,31,82,0.98));
-    box-shadow: 0 10px 35px rgba(10,46,122,0.15);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.visual::before {
-    content: "";
-    position: absolute;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(247,196,0,0.12);
-    right: -120px; top: -80px;
-}
-.visual::after {
-    content: "";
-    position: absolute;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: rgba(220,235,255,0.08);
-    left: -110px; bottom: -80px;
-}
-.visual-conteudo { position: relative; z-index: 2; padding: 32px; }
-.visual-label {
-    color: var(--amarelo);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-.visual h3 { font-size: 30px; line-height: 1.1; margin-top: 12px; }
-.visual p { color: #cbd9f2; font-size: 14px; line-height: 1.6; margin-top: 15px; }
-
-/* FOTO INSTITUCIONAL */
-.imagem-conceito {
-    position: relative;
-    margin: 25px 0 0;
-    height: 400px;
-    border-radius: 18px;
-    overflow: hidden;
-    background: #D5E3F3;
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-}
-.imagem-conceito img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-}
-.imagem-legenda {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    padding: 60px 18px 16px;
-    background: linear-gradient(to top, rgba(7,31,82,0.97) 0%, rgba(7,31,82,0.85) 45%, rgba(7,31,82,0) 100%);
-}
-.imagem-legenda .barra {
-    width: 38px; height: 3px;
-    background: var(--amarelo);
-    border-radius: 2px;
-    margin-bottom: 10px;
-}
-.imagem-legenda strong { display: block; font-size: 14px; line-height: 1.3; color: white; }
-
-.rodape-visual { position: relative; z-index: 2; padding: 0 32px 28px; }
-.linha { height: 1px; background: rgba(255,255,255,0.15); margin-bottom: 18px; }
-.rodape-visual span { font-size: 11px; color: #b9c9e8; }
-
-/* ===== RODAPÉ ===== */
-footer { text-align: center; padding: 25px; color: #8995aa; font-size: 11px; }
-
-/* ===== CELULAR ===== */
-@media (max-width: 850px) {
-    .painel { grid-template-columns: 1fr; }
-    .visual { min-height: 400px; }
-    .imagem-conceito { height: 460px; }
-    .topo { gap: 15px; }
-    .ano { display: none; }
-}
-@media (max-width: 550px) {
-    header { padding: 14px 18px; }
-    .marca h1 { font-size: 16px; }
-    .logo { width: 48px; height: 48px; }
-    main { margin-top: 20px; padding: 0 12px; }
-    .titulo h2 { font-size: 25px; }
-    .calendario-box { padding: 14px; border-radius: 16px; }
-    .dias-semana, .dias { gap: 5px; }
-    .dia { min-height: 55px; padding: 7px; border-radius: 9px; }
-    .numero { font-size: 12px; }
-    .visual-conteudo { padding: 25px; }
-    .visual h3 { font-size: 25px; }
-    .imagem-conceito { height: 400px; }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="topo">
-
-        <div class="marca">
-            <img class="logo" src="logo-cedb.png" alt="Logo do Centro Educacional Drihelly Barbosa">
-            <div>
-                <h1>Centro Educacional Drihelly Barbosa</h1>
-                <span>CALENDÁRIO DE MÍDIA</span>
-            </div>
-        </div>
-
-        <div class="ano">
-            <strong>2026</strong>
-            <span>Planejamento de conteúdo</span>
-        </div>
-
-    </div>
-</header>
-
-<main>
-
-    <div class="titulo">
-        <h2>Outubro</h2>
-        <p>Organização das publicações e conteúdos do CEDB</p>
+    <div class="dia">
+        <div class="numero">1</div>
     </div>
 
-    <div class="painel">
-
-        <!-- CALENDÁRIO -->
-        <section class="calendario-box">
-
-            <div class="cabecalho-calendario">
-                <h3>Calendário</h3>
-                <div class="mes-tag">OUTUBRO • 2026</div>
-            </div>
-
-            <div class="dias-semana">
-                <div class="dia-semana">DOM</div>
-                <div class="dia-semana">SEG</div>
-                <div class="dia-semana">TER</div>
-                <div class="dia-semana">QUA</div>
-                <div class="dia-semana">QUI</div>
-                <div class="dia-semana">SEX</div>
-                <div class="dia-semana">SÁB</div>
-            </div>
-
-            <div class="dias">
-
-                <!-- OUTUBRO 2026 COMEÇA NA QUINTA -->
-                <div class="dia vazio"></div>
-                <div class="dia vazio"></div>
-                <div class="dia vazio"></div>
-                <div class="dia vazio"></div>
-
-                <div class="dia"><div class="numero">1</div></div>
-                <div class="dia"><div class="numero">2</div></div>
-                <div class="dia"><div class="numero">3</div></div>
-
-                <div class="dia"><div class="numero">4</div></div>
-                <div class="dia"><div class="numero">5</div></div>
-                <div class="dia"><div class="numero">6</div></div>
-                <div class="dia"><div class="numero">7</div></div>
-                <div class="dia"><div class="numero">8</div></div>
-                <div class="dia"><div class="numero">9</div></div>
-                <div class="dia"><div class="numero">10</div></div>
-
-                <div class="dia"><div class="numero">11</div></div>
-                <div class="dia"><div class="numero">12</div></div>
-                <div class="dia"><div class="numero">13</div></div>
-                <div class="dia"><div class="numero">14</div></div>
-                <div class="dia"><div class="numero">15</div></div>
-                <div class="dia"><div class="numero">16</div></div>
-                <div class="dia"><div class="numero">17</div></div>
-
-                <div class="dia"><div class="numero">18</div></div>
-                <div class="dia"><div class="numero">19</div></div>
-                <div class="dia"><div class="numero">20</div></div>
-                <div class="dia"><div class="numero">21</div></div>
-                <div class="dia"><div class="numero">22</div></div>
-                <div class="dia"><div class="numero">23</div></div>
-                <div class="dia"><div class="numero">24</div></div>
-
-                <div class="dia"><div class="numero">25</div></div>
-                <div class="dia"><div class="numero">26</div></div>
-                <div class="dia"><div class="numero">27</div></div>
-                <div class="dia"><div class="numero">28</div></div>
-                <div class="dia"><div class="numero">29</div></div>
-                <div class="dia"><div class="numero">30</div></div>
-                <div class="dia"><div class="numero">31</div></div>
-
-            </div>
-
-        </section>
-
-        <!-- PAINEL VISUAL -->
-        <aside class="visual">
-
-            <div class="visual-conteudo">
-
-                <div class="visual-label">CEDB • EDUCAÇÃO</div>
-
-                <h3>Planejar hoje.<br>Publicar melhor.</h3>
-
-                <p>
-                    Um espaço para organizar as ideias,
-                    campanhas e publicações do
-                    Centro Educacional Drihelly Barbosa.
-                </p>
-
-                <div class="imagem-conceito">
-                    <img src="aluna-cedb.jpg" alt="Aluna do CEDB apontando para o calendário">
-                    <div class="imagem-legenda">
-                        <div class="barra"></div>
-                        <strong>Centro Educacional<br>Drihelly Barbosa</strong>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="rodape-visual">
-                <div class="linha"></div>
-                <span>Calendário de Mídia • 2026</span>
-            </div>
-
-        </aside>
-
+    <div class="dia">
+        <div class="numero">2</div>
     </div>
 
-</main>
+    <div class="dia">
+        <div class="numero">3</div>
+    </div>
 
-<footer>
-    CEDB • Calendário de Mídia • 2026
-</footer>
+    <div class="dia">
+        <div class="numero">4</div>
+    </div>
 
-</body>
-</html>
+    <div class="dia postagem">
+        <div class="numero">5</div>
+        <div class="etiqueta">Dia Mundial dos Professores</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">6</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">7</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">8</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">9</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">10</div>
+        <div class="etiqueta">Dia Mundial da Saúde Mental</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">11</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">12</div>
+        <div class="etiqueta">Dia das Crianças</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">13</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">14</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">15</div>
+        <div class="etiqueta">Dia do Professor</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">16</div>
+        <div class="etiqueta">Dia Mundial da Alimentação</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">17</div>
+        <div class="etiqueta">Dia Nacional da Vacinação</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">18</div>
+        <div class="etiqueta">Dia do Médico</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">19</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">20</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">21</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">22</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">23</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">24</div>
+        <div class="etiqueta">Aniversário de Manaus</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">25</div>
+        <div class="etiqueta">Dia Nacional da Saúde Bucal</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">26</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">27</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">28</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">29</div>
+        <div class="etiqueta">Dia Nacional do Livro</div>
+    </div>
+
+    <div class="dia">
+        <div class="numero">30</div>
+    </div>
+
+    <div class="dia postagem">
+        <div class="numero">31</div>
+        <div class="etiqueta">Dia do Saci</div>
+    </div>
+
+</div>
