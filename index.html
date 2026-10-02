@@ -481,8 +481,6 @@
       text-align: center;
     }
 
-    /* MODAL */
-
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -958,8 +956,6 @@
     CEDB • Centro Educacional Drihelly Barbosa • Calendário de Mídia 2026
   </footer>
 
-  <!-- MODAL -->
-
   <div class="modal-backdrop" id="modalBackdrop">
 
     <div class="modal" role="dialog" aria-modal="true">
@@ -1066,26 +1062,51 @@ Centro Educacional Drihelly Barbosa ☀️
 
         observacoes: "",
 
-        /* NOME EXATO DO ARQUIVO NO GITHUB */
         imagem: "dia-mundial-dos-professores.png.png"
       },
 
       10: {
         titulo: "Dia Mundial da Saúde Mental",
-        formato: ["FEED", "STORY"],
+        formato: ["FEED"],
         status: "PLANEJADO",
-        legenda: "Espaço reservado para a legenda da publicação.",
-        observacoes: "Conteúdo relacionado à saúde mental e bem-estar dos alunos.",
-        imagem: ""
+
+        legenda: `💙 10 de outubro | Dia Mundial da Saúde Mental
+
+Cuidar da mente também é cuidar da vida. 💛
+
+Em meio à rotina, aos desafios e às responsabilidades, é importante lembrar que nossas emoções merecem atenção, acolhimento e respeito. Falar sobre o que sentimos, ouvir sem julgar e oferecer apoio são atitudes que fazem a diferença.
+
+No Centro Educacional Drihelly Barbosa, acreditamos que a educação também se constrói com empatia, cuidado e respeito às emoções de cada pessoa. Afinal, aprender e ensinar também envolve cuidar de quem somos. ✨
+
+Cuidar da saúde mental é um compromisso de todos nós!
+
+#DiaMundialDaSaúdeMental #SaúdeMental #CentroEducacionalDrihellyBarbosa #EducaçãoComAfeto #Empatia #BemEstar`,
+
+        observacoes: "",
+
+        imagem: "dia-mundial-da-saude-mental.png.png"
       },
 
       12: {
         titulo: "Dia das Crianças",
-        formato: ["FEED", "STORY", "REELS"],
+        formato: ["FEED"],
         status: "PLANEJADO",
-        legenda: "Espaço reservado para a legenda da publicação.",
-        observacoes: "Avaliar possibilidade de vídeo/reels com registros das atividades.",
-        imagem: ""
+
+        legenda: `🎈 12 de outubro | Dia das Crianças 💙💛
+
+Ser criança é descobrir o mundo com curiosidade, transformar pequenas coisas em grandes aventuras e encontrar alegria nos detalhes mais simples. É ter espaço para brincar, aprender, sonhar e crescer cercado de amor e cuidado. ✨
+
+Neste dia tão especial, o Centro Educacional Drihelly Barbosa celebra a infância e a alegria de cada criança que enche nossa escola de vida, descobertas e sorrisos.
+
+Que nunca faltem carinho, respeito, oportunidades e liberdade para que cada criança possa construir sua própria história e realizar seus sonhos. 🧸📚
+
+Feliz Dia das Crianças! Que a infância seja sempre uma fase de amor, descobertas e felicidade. ☀️
+
+#DiaDasCrianças #12DeOutubro #CentroEducacionalDrihellyBarbosa #InfânciaFeliz #Educação #AprenderBrincando`,
+
+        observacoes: "",
+
+        imagem: "dia-das-criancas.png.png"
       },
 
       15: {
@@ -1162,7 +1183,6 @@ Centro Educacional Drihelly Barbosa ☀️
 
     };
 
-
     const calendar = document.getElementById("calendar");
     const eventsList = document.getElementById("eventsList");
 
@@ -1183,7 +1203,6 @@ Centro Educacional Drihelly Barbosa ☀️
     const primeiroDia = new Date(2026, 9, 1).getDay();
     const totalDias = 31;
 
-
     for (let i = 0; i < primeiroDia; i++) {
 
       const emptyDay = document.createElement("div");
@@ -1193,7 +1212,6 @@ Centro Educacional Drihelly Barbosa ☀️
       calendar.appendChild(emptyDay);
 
     }
-
 
     for (let dia = 1; dia <= totalDias; dia++) {
 
@@ -1238,7 +1256,6 @@ Centro Educacional Drihelly Barbosa ☀️
 
     }
 
-
     Object.entries(publicacoes).forEach(([dia, data]) => {
 
       const button = document.createElement("button");
@@ -1262,7 +1279,6 @@ Centro Educacional Drihelly Barbosa ☀️
 
     });
 
-
     function abrirModal(dia) {
 
       const data = publicacoes[dia];
@@ -1281,7 +1297,6 @@ Centro Educacional Drihelly Barbosa ☀️
       modalNotes.textContent =
         data.observacoes || "Nenhuma observação cadastrada.";
 
-
       modalFormat.innerHTML = "";
 
       data.formato.forEach(formato => {
@@ -1295,9 +1310,6 @@ Centro Educacional Drihelly Barbosa ☀️
         modalFormat.appendChild(tag);
 
       });
-
-
-      /* CONTROLE DA ARTE */
 
       artImage.onerror = function() {
         artImage.style.display = "none";
@@ -1326,13 +1338,11 @@ Centro Educacional Drihelly Barbosa ☀️
 
       }
 
-
       modalBackdrop.classList.add("active");
 
       document.body.style.overflow = "hidden";
 
     }
-
 
     function fecharModal() {
 
@@ -1342,9 +1352,7 @@ Centro Educacional Drihelly Barbosa ☀️
 
     }
 
-
     closeModalButton.addEventListener("click", fecharModal);
-
 
     modalBackdrop.addEventListener("click", (event) => {
 
@@ -1355,7 +1363,6 @@ Centro Educacional Drihelly Barbosa ☀️
       }
 
     });
-
 
     document.addEventListener("keydown", (event) => {
 
