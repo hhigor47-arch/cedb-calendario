@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -851,7 +850,6 @@
     </div>
   </header>
 
-
   <main class="container">
 
     <section class="heading">
@@ -866,7 +864,6 @@
       </div>
 
     </section>
-
 
     <section class="stats">
 
@@ -889,7 +886,6 @@
       </div>
 
     </section>
-
 
     <section class="main-grid">
 
@@ -919,7 +915,6 @@
 
       </div>
 
-
       <aside class="sidebar">
 
         <div class="card side-card">
@@ -932,7 +927,6 @@
           <div class="events-list" id="eventsList"></div>
 
         </div>
-
 
         <div class="card photo-card">
 
@@ -960,11 +954,9 @@
 
   </main>
 
-
   <footer>
     CEDB • Centro Educacional Drihelly Barbosa • Calendário de Mídia 2026
   </footer>
-
 
   <!-- MODAL -->
 
@@ -985,7 +977,6 @@
 
       </div>
 
-
       <div class="modal-body">
 
         <div class="art-placeholder" id="artPlaceholder">
@@ -1000,7 +991,6 @@
 
         </div>
 
-
         <div class="modal-info-grid">
 
           <div class="info-box">
@@ -1010,7 +1000,6 @@
             <div class="format-tags" id="modalFormat"></div>
 
           </div>
-
 
           <div class="info-box">
 
@@ -1027,7 +1016,6 @@
 
           </div>
 
-
           <div class="info-box full">
 
             <div class="info-label">Legenda</div>
@@ -1035,7 +1023,6 @@
             <div class="info-value" id="modalCaption"></div>
 
           </div>
-
 
           <div class="info-box full">
 
@@ -1052,7 +1039,6 @@
     </div>
 
   </div>
-
 
   <script>
 
@@ -1080,7 +1066,8 @@ Centro Educacional Drihelly Barbosa ☀️
 
         observacoes: "",
 
-        imagem: "dimagem: "dia-mundial-dos-professores.png.png""
+        /* NOME EXATO DO ARQUIVO NO GITHUB */
+        imagem: "dia-mundial-dos-professores.png.png"
       },
 
       10: {
@@ -1191,6 +1178,7 @@ Centro Educacional Drihelly Barbosa ☀️
 
     const artPlaceholder = document.getElementById("artPlaceholder");
     const artImage = document.getElementById("artImage");
+    const artPlaceholderContent = document.querySelector(".art-placeholder-content");
 
     const primeiroDia = new Date(2026, 9, 1).getDay();
     const totalDias = 31;
@@ -1214,6 +1202,7 @@ Centro Educacional Drihelly Barbosa ☀️
       const data = publicacoes[dia];
 
       const dataCompleta = new Date(2026, 9, dia);
+
       const diaSemana = dataCompleta.getDay();
 
       dayElement.className = "day";
@@ -1308,21 +1297,32 @@ Centro Educacional Drihelly Barbosa ☀️
       });
 
 
+      /* CONTROLE DA ARTE */
+
+      artImage.onerror = function() {
+        artImage.style.display = "none";
+        artPlaceholder.classList.remove("has-image");
+        artPlaceholderContent.style.display = "block";
+      };
+
       if (data.imagem && data.imagem.trim() !== "") {
 
+        artImage.style.display = "block";
         artImage.src = data.imagem;
 
         artPlaceholder.classList.add("has-image");
 
-        document.querySelector(".art-placeholder-content").style.display = "none";
+        artPlaceholderContent.style.display = "none";
 
       } else {
 
         artImage.src = "";
 
+        artImage.style.display = "none";
+
         artPlaceholder.classList.remove("has-image");
 
-        document.querySelector(".art-placeholder-content").style.display = "block";
+        artPlaceholderContent.style.display = "block";
 
       }
 
@@ -1371,4 +1371,3 @@ Centro Educacional Drihelly Barbosa ☀️
 
 </body>
 </html>
-```
