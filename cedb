@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Mídia CEDB</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            color: #0A2E7A;
+        }
+
+        header {
+            background: #0A2E7A;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        header p {
+            margin-top: 6px;
+            color: #DCEBFF;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .mes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .mes h2 {
+            font-size: 24px;
+        }
+
+        .calendario {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .dia-semana {
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            color: #0A2E7A;
+        }
+
+        .dia {
+            min-height: 100px;
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .vazio {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .tem-postagem {
+            background: #fff8d6;
+            border: 2px solid #F7C400;
+            cursor: pointer;
+        }
+
+        .tem-postagem:hover {
+            transform: translateY(-2px);
+            transition: 0.2s;
+        }
+
+        .evento {
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: normal;
+            color: #333;
+        }
+
+        @media (max-width: 700px) {
+            .calendario {
+                gap: 5px;
+            }
+
+            .dia {
+                min-height: 70px;
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .dia-semana {
+                font-size: 12px;
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Calendário de Mídia CEDB</h1>
+    <p>Planejamento de conteúdo • Outubro 2026</p>
+</header>
+
+<div class="container">
+
+    <div class="mes">
+        <h2>Outubro 2026</h2>
+    </div>
+
+    <div class="calendario">
+
+        <div class="dia-semana">DOM</div>
+        <div class="dia-semana">SEG</div>
+        <div class="dia-semana">TER</div>
+        <div class="dia-semana">QUA</div>
+        <div class="dia-semana">QUI</div>
+        <div class="dia-semana">SEX</div>
+        <div class="dia-semana">SÁB</div>
+
+        <!-- Outubro de 2026 começa em uma quinta-feira -->
+
+        <div class="dia vazio"></div>
+        <div class="dia vazio"></div>
+        <div class="dia vazio"></div>
+        <div class="dia vazio"></div>
+
+        <div class="dia">1</div>
+        <div class="dia">2</div>
+        <div class="dia">3</div>
+
+        <div class="dia">4</div>
+        <div class="dia">5</div>
+        <div class="dia">6</div>
+        <div class="dia">7</div>
+        <div class="dia">8</div>
+        <div class="dia">9</div>
+        <div class="dia">10</div>
+
+        <div class="dia">11</div>
+        <div class="dia">12</div>
+        <div class="dia">13</div>
+        <div class="dia">14</div>
+        <div class="dia">15</div>
+        <div class="dia">16</div>
+        <div class="dia">17</div>
+
+        <div class="dia">18</div>
+        <div class="dia">19</div>
+        <div class="dia">20</div>
+        <div class="dia">21</div>
+        <div class="dia">22</div>
+        <div class="dia">23</div>
+        <div class="dia">24</div>
+
+        <div class="dia">25</div>
+        <div class="dia">26</div>
+        <div class="dia">27</div>
+        <div class="dia">28</div>
+        <div class="dia">29</div>
+        <div class="dia">30</div>
+        <div class="dia">31</div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
