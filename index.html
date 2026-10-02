@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -41,10 +42,6 @@
     button {
       font-family: inherit;
     }
-
-    /* =========================
-       TOPO
-    ========================= */
 
     .topbar {
       background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
@@ -109,10 +106,6 @@
       font-weight: 700;
     }
 
-    /* =========================
-       CONTAINER
-    ========================= */
-
     .container {
       max-width: 1400px;
       margin: auto;
@@ -151,10 +144,6 @@
       white-space: nowrap;
     }
 
-    /* =========================
-       INDICADORES
-    ========================= */
-
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -191,10 +180,6 @@
       margin-top: 3px;
     }
 
-    /* =========================
-       LAYOUT PRINCIPAL
-    ========================= */
-
     .main-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 370px;
@@ -208,10 +193,6 @@
       border-radius: 20px;
       box-shadow: var(--sombra);
     }
-
-    /* =========================
-       CALENDÁRIO
-    ========================= */
 
     .calendar-card {
       padding: 20px;
@@ -350,10 +331,6 @@
       background: var(--amarelo);
     }
 
-    /* =========================
-       SIDEBAR
-    ========================= */
-
     .sidebar {
       display: flex;
       flex-direction: column;
@@ -443,10 +420,6 @@
       margin-top: 3px;
     }
 
-    /* =========================
-       FOTO INSTITUCIONAL
-    ========================= */
-
     .photo-card {
       position: relative;
       overflow: hidden;
@@ -500,10 +473,6 @@
       opacity: .88;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
     footer {
       max-width: 1400px;
       margin: 0 auto;
@@ -513,9 +482,7 @@
       text-align: center;
     }
 
-    /* =========================
-       MODAL
-    ========================= */
+    /* MODAL */
 
     .modal-backdrop {
       position: fixed;
@@ -604,8 +571,7 @@
       min-height: 280px;
       border-radius: 16px;
       border: 2px dashed #cbd5e1;
-      background:
-        linear-gradient(135deg, #f8fafc, #eef4ff);
+      background: linear-gradient(135deg, #f8fafc, #eef4ff);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -692,6 +658,7 @@
       font-size: 12px;
       line-height: 1.55;
       font-weight: 600;
+      white-space: pre-line;
     }
 
     .format-tags {
@@ -727,10 +694,6 @@
       border-radius: 50%;
       background: var(--verde);
     }
-
-    /* =========================
-       RESPONSIVO
-    ========================= */
 
     @media (max-width: 1050px) {
       .main-grid {
@@ -867,10 +830,6 @@
 
 <body>
 
-  <!-- =========================
-       TOPO
-  ========================= -->
-
   <header class="topbar">
     <div class="topbar-inner">
 
@@ -895,10 +854,6 @@
 
   <main class="container">
 
-    <!-- =========================
-         CABEÇALHO
-    ========================= -->
-
     <section class="heading">
 
       <div>
@@ -913,15 +868,11 @@
     </section>
 
 
-    <!-- =========================
-         INDICADORES
-    ========================= -->
-
     <section class="stats">
 
       <div class="stat">
         <div class="stat-label">Datas planejadas</div>
-        <div class="stat-value" id="totalEventos">11</div>
+        <div class="stat-value">11</div>
         <div class="stat-small">publicações previstas</div>
       </div>
 
@@ -940,13 +891,7 @@
     </section>
 
 
-    <!-- =========================
-         CONTEÚDO
-    ========================= -->
-
     <section class="main-grid">
-
-      <!-- CALENDÁRIO -->
 
       <div class="card calendar-card">
 
@@ -974,8 +919,6 @@
 
       </div>
 
-
-      <!-- SIDEBAR -->
 
       <aside class="sidebar">
 
@@ -1023,19 +966,17 @@
   </footer>
 
 
-  <!-- =========================
-       MODAL
-  ========================= -->
+  <!-- MODAL -->
 
   <div class="modal-backdrop" id="modalBackdrop">
 
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" role="dialog" aria-modal="true">
 
       <div class="modal-header">
 
         <div>
-          <div class="modal-kicker" id="modalDate">15 DE OUTUBRO</div>
-          <h2 id="modalTitle">Dia do Professor</h2>
+          <div class="modal-kicker" id="modalDate">05 DE OUTUBRO</div>
+          <h2 id="modalTitle">Dia Mundial dos Professores</h2>
         </div>
 
         <button class="close-modal" id="closeModal" aria-label="Fechar">
@@ -1066,10 +1007,7 @@
 
             <div class="info-label">Formato</div>
 
-            <div class="format-tags" id="modalFormat">
-              <span class="format-tag">FEED</span>
-              <span class="format-tag">STORY</span>
-            </div>
+            <div class="format-tags" id="modalFormat"></div>
 
           </div>
 
@@ -1094,9 +1032,7 @@
 
             <div class="info-label">Legenda</div>
 
-            <div class="info-value" id="modalCaption">
-              Espaço reservado para a legenda da publicação.
-            </div>
+            <div class="info-value" id="modalCaption"></div>
 
           </div>
 
@@ -1105,9 +1041,7 @@
 
             <div class="info-label">Observações</div>
 
-            <div class="info-value" id="modalNotes">
-              Espaço reservado para observações internas.
-            </div>
+            <div class="info-value" id="modalNotes"></div>
 
           </div>
 
@@ -1122,28 +1056,31 @@
 
   <script>
 
-    /* =====================================================
-       DADOS DAS PUBLICAÇÕES
-
-       É AQUI QUE FUTURAMENTE VAMOS COLOCAR:
-       - imagens
-       - legendas
-       - Feed
-       - Story
-       - Reels
-       - status
-       - observações
-       ===================================================== */
-
     const publicacoes = {
 
       5: {
         titulo: "Dia Mundial dos Professores",
-        formato: ["FEED", "STORY"],
+        formato: ["FEED"],
         status: "PLANEJADO",
-        legenda: "Espaço reservado para a legenda da publicação.",
-        observacoes: "Preparar arte institucional valorizando os professores do CEDB.",
-        imagem: ""
+
+        legenda: `📚💙 5 de outubro | Dia Mundial dos Professores 💛☀️
+
+Ensinar vai muito além de transmitir conhecimento: é inspirar sonhos, despertar talentos e transformar vidas por meio da educação. ✨
+
+Hoje, o Centro Educacional Drihelly Barbosa homenageia todos os professores que, com dedicação, paciência e carinho, fazem a diferença na vida de seus alunos e contribuem diariamente para a construção de um futuro melhor.
+
+A cada professor que compartilha conhecimento, enfrenta desafios e acredita no potencial de cada estudante, deixamos o nosso mais sincero agradecimento. Vocês fazem parte de cada conquista e de cada novo começo! 🍎📖
+
+Feliz Dia Mundial dos Professores! 💙💛
+
+Com carinho,
+Centro Educacional Drihelly Barbosa ☀️
+
+#DiaMundialDosProfessores #DiaDosProfessores #CentroEducacionalDrihellyBarbosa #EducaçãoTransforma #GratidãoAosProfessores #EducarÉTransformar`,
+
+        observacoes: "",
+
+        imagem: "dia-mundial-dos-professores.png"
       },
 
       10: {
@@ -1239,10 +1176,6 @@
     };
 
 
-    /* =====================================================
-       ELEMENTOS
-       ===================================================== */
-
     const calendar = document.getElementById("calendar");
     const eventsList = document.getElementById("eventsList");
 
@@ -1259,18 +1192,10 @@
     const artPlaceholder = document.getElementById("artPlaceholder");
     const artImage = document.getElementById("artImage");
 
-
-    /* =====================================================
-       CALENDÁRIO
-       Outubro de 2026 começa em uma quinta-feira.
-       0 = domingo
-       ===================================================== */
-
     const primeiroDia = new Date(2026, 9, 1).getDay();
     const totalDias = 31;
 
 
-    // Espaços antes do dia 1
     for (let i = 0; i < primeiroDia; i++) {
 
       const emptyDay = document.createElement("div");
@@ -1282,7 +1207,6 @@
     }
 
 
-    // Dias do mês
     for (let dia = 1; dia <= totalDias; dia++) {
 
       const dayElement = document.createElement("div");
@@ -1310,9 +1234,7 @@
         `;
 
         dayElement.addEventListener("click", () => {
-
           abrirModal(dia);
-
         });
 
       } else {
@@ -1327,10 +1249,6 @@
 
     }
 
-
-    /* =====================================================
-       LISTA LATERAL
-       ===================================================== */
 
     Object.entries(publicacoes).forEach(([dia, data]) => {
 
@@ -1348,9 +1266,7 @@
       `;
 
       button.addEventListener("click", () => {
-
         abrirModal(Number(dia));
-
       });
 
       eventsList.appendChild(button);
@@ -1358,16 +1274,11 @@
     });
 
 
-    /* =====================================================
-       ABRIR MODAL
-       ===================================================== */
-
     function abrirModal(dia) {
 
       const data = publicacoes[dia];
 
       if (!data) return;
-
 
       modalDate.textContent =
         `${String(dia).padStart(2, "0")} DE OUTUBRO`;
@@ -1378,10 +1289,10 @@
 
       modalCaption.textContent = data.legenda;
 
-      modalNotes.textContent = data.observacoes;
+      modalNotes.textContent =
+        data.observacoes || "Nenhuma observação cadastrada.";
 
 
-      // Formatos
       modalFormat.innerHTML = "";
 
       data.formato.forEach(formato => {
@@ -1397,7 +1308,6 @@
       });
 
 
-      // Imagem
       if (data.imagem && data.imagem.trim() !== "") {
 
         artImage.src = data.imagem;
@@ -1424,10 +1334,6 @@
     }
 
 
-    /* =====================================================
-       FECHAR MODAL
-       ===================================================== */
-
     function fecharModal() {
 
       modalBackdrop.classList.remove("active");
@@ -1440,7 +1346,6 @@
     closeModalButton.addEventListener("click", fecharModal);
 
 
-    // Clicar fora do modal
     modalBackdrop.addEventListener("click", (event) => {
 
       if (event.target === modalBackdrop) {
@@ -1452,7 +1357,6 @@
     });
 
 
-    // Tecla ESC
     document.addEventListener("keydown", (event) => {
 
       if (event.key === "Escape") {
@@ -1467,3 +1371,4 @@
 
 </body>
 </html>
+```
